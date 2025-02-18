@@ -1,0 +1,26 @@
+node_modules
+coverage
+coverage-ts
+storybook-static
+
+# eslint can't handle the type defintion for the addStyle HOC
+packages/wonder-blocks-core/util/add-style.js
+**/dist
+
+# it probably passes, but we really don't care
+styleguide.prod.config.js
+
+config
+
+# ignore files that eslint doesn't know how to lint
+package.json
+**/*.md
+**/*.mdx
+.github/**/*.yml
+CODEOWNERS
+**/*.json
+**/*.jpg
+**/*.png
+**/*.svg
+
+types/

@@ -1,0 +1,3 @@
+packages:
+  # All WB packages
+  - 'packages/*'

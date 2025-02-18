@@ -1,34 +1,13 @@
+// This file is used by the `typecheck` command in package.json
+/* Visit https://aka.ms/tsconfig to read more about this file */
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "alwaysStrict": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "module": "ES2020",
-    "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "outDir": "./dist/es",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "es2020",
-  },
-  "include": ["**/*"],
-  "exclude": [
-    "node_modules",
-    "public/**/*",
-    "**/dist/**/*",
-    "**/template/**/*",
-    "**/__tests__/**/*",
-    "**/__testfixtures__/**/*",
-    "**/*.spec.*",
-    "**/*.stories.*"
-  ],
-  "typeRoots": ["./node_modules/@types", "./global.d.ts"]
+    "exclude": ["**/dist", "coverage", "coverage-ts"],
+    "extends": "./tsconfig-common.json",
+    "compilerOptions": {
+        "noEmit": true,
+
+        "paths": {
+            "@khanacademy/*": ["./packages/*/src"]
+        }
+    }
 }

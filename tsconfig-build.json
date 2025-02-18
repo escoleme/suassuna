@@ -1,0 +1,9 @@
+// This file is used by the `build:types` command in package.json
+/* Visit https://aka.ms/tsconfig to read more about this file */
+{
+    // Intentionally empty, all files are covered by tsconfig.json files
+    // in each package directory.
+    "files": [],
+    "references": [
+    ]
+}
