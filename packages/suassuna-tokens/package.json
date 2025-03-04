@@ -2,6 +2,9 @@
   "name": "@escoleme/suassuna-tokens",
   "version": "0.1.0",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "build/index.js",
   "module": "build/es/index.js",
   "dependencies": {
