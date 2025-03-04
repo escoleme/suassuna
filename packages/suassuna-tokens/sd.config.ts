@@ -1,8 +1,8 @@
 import StyleDictionary from "style-dictionary";
-import { formats, transformGroups } from 'style-dictionary/enums';
+import {formats, transformGroups} from "style-dictionary/enums";
 
-const { scssVariables, json } = formats;
-const { web, js, } = transformGroups;
+const {scssVariables, json} = formats;
+const {web, js} = transformGroups;
 
 const PREFIX = "me";
 type BRAND = "brand-foo";
@@ -12,41 +12,42 @@ const createStyleDictionaryConfig = (brand: BRAND, platform: PLATFORM) => {
     return {
         source: [
             `tokens/brands/${brand}/*.json`,
-            'tokens/globals/**/*.json',
+            "tokens/globals/**/*.json",
             `tokens/platforms/${platform}/*.json`,
         ],
         platforms: {
             web: {
                 transformGroup: web,
-                buildPath: `build/web/${brand}/`,
+                buildPath: `dist/web/${brand}/`,
                 prefix: PREFIX,
                 files: [
                     {
-                        destination: 'tokens.scss',
+                        destination: "tokens.scss",
                         format: scssVariables,
                     },
                 ],
             },
 
-            "js": {
-                "transformGroup": "js",
-                buildPath: `build/web/${brand}/`,
-                "files": [
+            js: {
+                transformGroup: "js",
+                buildPath: `dist/web/${brand}/`,
+                files: [
                     {
-                        "destination": "variables.js",
-                        "format": "javascript/es6"
-                    }
-                ]
-            }
-
-
+                        destination: "variables.js",
+                        format: "javascript/es6",
+                    },
+                    {
+                        format: "typescript/module-declarations",
+                        destination: "variables.d.ts",
+                    },
+                ],
+            },
         },
     };
 };
 
 const buildThemes: Promise<void> = (async () => {
-
-    const brands : BRAND[] = ["brand-foo"];
+    const brands: BRAND[] = ["brand-foo"];
     const platforms: PLATFORM[] = ["web", "js"];
 
     console.log("Build iniciado...");
@@ -54,9 +55,11 @@ const buildThemes: Promise<void> = (async () => {
 
     brands.forEach((brand: BRAND) => {
         platforms.forEach((platform: PLATFORM) => {
-            const sd = new StyleDictionary(createStyleDictionaryConfig(brand, platform));
+            const sd = new StyleDictionary(
+                createStyleDictionaryConfig(brand, platform),
+            );
             sd.buildPlatform(platform);
-        })
+        });
     });
 
     console.log("\n==============================================");

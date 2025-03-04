@@ -1,17 +1,16 @@
 {
-  "name": "tokens",
+  "name": "@escoleme/suassuna-tokens",
   "version": "0.1.0",
   "license": "MIT",
   "main": "build/index.js",
   "module": "build/es/index.js",
-  "types": "build/index.d.ts",
   "dependencies": {
     "@babel/runtime": "^7.24.5",
     "cross-env": "^7.0.3",
     "tsx": "^4.19.2"
   },
   "scripts": {
-    "build": "tsx sd.config.ts"
+    "build": "tsx sd.config.ts --declaration"
   },
   "devDependencies": {
     "style-dictionary": "^4.3.3"

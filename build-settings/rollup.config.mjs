@@ -8,6 +8,7 @@ import resolve from "@rollup/plugin-node-resolve";
 // eslint-disable-next-line import/extensions
 import makeBabelConfig from "./babel.config.js";
 import commonjs from '@rollup/plugin-commonjs';
+import { execSync } from "child_process";
 
 
 const {presets, plugins} = makeBabelConfig({env: () => false});
@@ -19,6 +20,18 @@ const createConfig = (pkgName) => {
     }
 
     const extensions = [".js", ".jsx", ".ts", ".tsx"];
+
+
+    // O package de design token utiliza o script build para executar o sd.config.ts
+    if(pkgName === "suassuna-tokens") {
+        execSync("pnpm run build", {
+            cwd: path.join("packages", "suassuna-tokens"),
+            stdio: "inherit", // Exibe a saída do comando no terminal
+        })
+        return null
+    }
+
+        // nodejs pnpm run build
 
     return {
         output: [
