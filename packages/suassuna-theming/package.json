@@ -1,6 +1,6 @@
 {
   "name": "@escoleme/suassuna-theming",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "O Theming no Suassuna pode ser definido por nível de pacote/componente usando um objeto de tema que define as cores, espaçamento, fontes e muito mais do seus componentes.",
   "main": "dist/index.js",
   "module": "dist/es/index.js",

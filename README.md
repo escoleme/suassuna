@@ -1,2 +1,3 @@
-# components
-Cairo React components
+# Suassuna
+
+O EscoleMe Suassuna design system. 

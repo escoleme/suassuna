@@ -4,7 +4,7 @@
 // Returns the preset-env `targets` configuration object for the environment
 // being currently built.
 const presetEnvTargets = (api) => {
-    // NOTE(jeremy). We have two concepts of env in our webpack/babel land.
+    // We have two concepts of env in our webpack/babel land.
     // * NODE_ENV is always either "development" or "production" and is usually
     //   set by the various package.json scripts using `env NODE_ENV=...`.
     // * ENV (passed into webpack.common.js can be "prod", "dev", or "test").

@@ -21,17 +21,14 @@ const createConfig = (pkgName) => {
 
     const extensions = [".js", ".jsx", ".ts", ".tsx"];
 
-
     // O package de design token utiliza o script build para executar o sd.config.ts
     if(pkgName === "suassuna-tokens") {
         execSync("pnpm run build", {
             cwd: path.join("packages", "suassuna-tokens"),
-            stdio: "inherit", // Exibe a saída do comando no terminal
+            stdio: "inherit",
         })
         return null
     }
-
-        // nodejs pnpm run build
 
     return {
         output: [
@@ -39,17 +36,8 @@ const createConfig = (pkgName) => {
                 file: `packages/${pkgName}/dist/es/index.js`,
                 format: "esm",
             },
-            // TODO: Stop building CJS modules
-            {
-                file: `packages/${pkgName}/dist/index.js`,
-                format: "cjs",
-            },
         ],
         input: `packages/${pkgName}/src/index.ts`,
-        // We're using `builtIns: "usage"` with @babel/preset-env.
-        // This results in individual modules being imported from
-        // core-js directly.  `autoExternal` doesn't know how to
-        // deal with this so we manually externalize these imports.
         external: [/core-js/],
         plugins: [
             babel({
