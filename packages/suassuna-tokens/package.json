@@ -2,6 +2,7 @@
   "name": "@escoleme/suassuna-tokens",
   "version": "0.1.0",
   "license": "MIT",
+  "author": "Joel Henrique Silva Santos <joelhenrique2000@gmail.com>",
   "publishConfig": {
     "access": "public"
   },
