@@ -1,0 +1,8 @@
+{
+  "color": {
+    "seed": { "value":  "#0B57D0", "type": "color" },
+    "coreColors": {
+      "primary": { "value":  "#0B57D0", "type": "color" }
+    }
+  }
+}

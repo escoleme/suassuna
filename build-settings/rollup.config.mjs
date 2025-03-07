@@ -9,6 +9,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import makeBabelConfig from "./babel.config.js";
 import commonjs from '@rollup/plugin-commonjs';
 import { execSync } from "child_process";
+import json from "@rollup/plugin-json";
 
 
 const {presets, plugins} = makeBabelConfig({env: () => false});
@@ -27,7 +28,7 @@ const createConfig = (pkgName) => {
             cwd: path.join("packages", "suassuna-tokens"),
             stdio: "inherit",
         })
-        return null
+        //return null
     }
 
     return {
@@ -56,6 +57,7 @@ const createConfig = (pkgName) => {
                 packagePath: `packages/${pkgName}/package.json`,
             }),
             commonjs(),
+            json(),
         ],
     };
 };

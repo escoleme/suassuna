@@ -6,8 +6,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "build/index.js",
-  "module": "build/es/index.js",
+  "main": "dist/index.js",
+  "module": "dist/es/index.js",
   "dependencies": {
     "@babel/runtime": "^7.24.5",
     "cross-env": "^7.0.3",

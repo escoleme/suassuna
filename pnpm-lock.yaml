@@ -304,13 +304,33 @@ importers:
         specifier: ^3.0.4
         version: 3.0.5(@types/debug@4.1.12)(@types/node@22.13.4)(@vitest/browser@3.0.5)(jsdom@20.0.3)(msw@2.7.0(@types/node@22.13.4)(typescript@5.7.3))(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0)
 
-  build-settings: {}
+  build-settings:
+    dependencies:
+      '@rollup/plugin-json':
+        specifier: ^6.1.0
+        version: 6.1.0(rollup@4.34.7)
 
   packages/suassuna-theming:
     dependencies:
       '@escoleme/suassuna-tokens':
         specifier: workspace:*
-        version: link:../tokens
+        version: link:../suassuna-tokens
+
+  packages/suassuna-tokens:
+    dependencies:
+      '@babel/runtime':
+        specifier: ^7.24.5
+        version: 7.26.9
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
+      tsx:
+        specifier: ^4.19.2
+        version: 4.19.2
+    devDependencies:
+      style-dictionary:
+        specifier: ^4.3.3
+        version: 4.3.3
 
   packages/tokens:
     dependencies:
@@ -1760,6 +1780,15 @@ packages:
     engines: {node: '>=16.0.0 || 14 >= 14.17'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+
+  '@rollup/plugin-json@6.1.0':
+    resolution: {integrity: sha512-EGI2te5ENk1coGeADSIwZ7G2Q8CJS2sF120T7jLw4xFw9n7wIOXHo+kIYRAoVpJAN+kmqZSoO3Fp4JtoNF4ReA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -8748,6 +8777,12 @@ snapshots:
     optionalDependencies:
       rollup: 2.79.2
 
+  '@rollup/plugin-json@6.1.0(rollup@4.34.7)':
+    dependencies:
+      '@rollup/pluginutils': 5.1.4(rollup@4.34.7)
+    optionalDependencies:
+      rollup: 4.34.7
+
   '@rollup/plugin-node-resolve@16.0.0(rollup@2.79.2)':
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@2.79.2)
@@ -8765,6 +8800,14 @@ snapshots:
       picomatch: 4.0.2
     optionalDependencies:
       rollup: 2.79.2
+
+  '@rollup/pluginutils@5.1.4(rollup@4.34.7)':
+    dependencies:
+      '@types/estree': 1.0.6
+      estree-walker: 2.0.2
+      picomatch: 4.0.2
+    optionalDependencies:
+      rollup: 4.34.7
 
   '@rollup/rollup-android-arm-eabi@4.34.7':
     optional: true

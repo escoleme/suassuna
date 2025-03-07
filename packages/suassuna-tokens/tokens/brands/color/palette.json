@@ -1,5 +1,10 @@
 {
-  "palette": {
+  "color": {
+    "seed": { "value":  "#0B57D0", "type": "color" },
+    "coreColors": {
+      "primary": { "value":  "#0B57D0", "type": "color" }
+    },
+    "palette": {
       "primary": {
         "0": { "value":"#000000", "type": "color" },
         "5": { "value": "#000E32", "type": "color" },
@@ -101,4 +106,5 @@
         "100": { "value": "#FFFFFF", "type": "color" }
       }
     }
+  }
 }
