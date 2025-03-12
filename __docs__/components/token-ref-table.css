@@ -1,9 +1,71 @@
+.playground_color {
+    display: flex;
+    width: 100%;
+    background-color: #f8f8f8;
+    margin-bottom: 80px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 32px 8px 16px;
+}
+
+@media only screen and (min-width: 1280px) {
+    .afg-row {
+        margin-right: -16px;
+        margin-left: -16px;
+    }
+}
+
+.afg-row {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.playground_palette__content {
+    flex-direction: column;
+    gap: 16px;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.playground_palette__header {
+
+}
+
+.playground_palette__header-title {
+    display: inline-block;
+    padding-left: 22px;
+    color: #000;
+    font-size: 28px;
+    font-stretch: normal;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-block: 0;
+}
+
+
+
+
+
+
+
+
+
 .tabela {
     border-collapse: collapse;
     border-spacing: 0;
     margin: 32px 0;
     text-align: left;
     width: 100%;
+}
+
+.tabela td {
+    padding: 15px 15px !important;
 }
 
 .token-badge-color {

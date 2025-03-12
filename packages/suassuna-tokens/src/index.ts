@@ -1,13 +1,29 @@
 import tokens from '../dist/json/brand-foo/variables.json';
 
-export default {
+interface DesignToken {
+    value?: any;
+    type?: string;
+    comment?: string;
+    name?: string;
+    themeable?: boolean;
+    attributes?: Record<string, unknown>;
+    [key: string]: any;
+}
+
+const token: {
     globals: {
-        schemes: tokens.schemes,
+        schemes: {
+            light: {
+                [key: string]: DesignToken;
+            }
+        }
+    };
+} = {
+    globals: {
+        schemes: {
+            light: tokens.schemes.light,
+        },
     },
-    "brands": {
-
-    },
-    "platforms": {
-
-    }
 };
+
+export default token

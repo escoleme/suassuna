@@ -1,5 +1,6 @@
 import StyleDictionary from "style-dictionary";
-import { formats, transforms, transformGroups, transformTypes } from 'style-dictionary/enums';
+import {getTypeScriptType} from "style-dictionary/utils";
+import { formats, transforms, transformGroups, transformTypes,  } from 'style-dictionary/enums';
 
 
 const PREFIX = "me";
@@ -18,6 +19,19 @@ const createStyleDictionaryConfig = (brand: BRAND, platform: PLATFORM) => {
         format: function ({ dictionary, platform, options, file }) {
 
             return dictionary.tokens;
+        },
+    });
+
+    StyleDictionary.registerFormat({
+        name: 'myCustomFormataa',
+        format: function ({ dictionary, options }) {
+            return dictionary.allTokens
+                .map(function (prop) {
+                    var to_ret_prop = 'export const ' + prop.name + ' : ' + getTypeScriptType(prop.value) + ';';
+                    if (prop.comment) to_ret_prop = to_ret_prop.concat(' // ' + prop.comment);
+                    return to_ret_prop;
+                })
+                .join('\n');
         },
     });
 
@@ -40,6 +54,8 @@ const createStyleDictionaryConfig = (brand: BRAND, platform: PLATFORM) => {
                 ],
             },
 
+            /*
+
             js: {
                 transformGroup: "js",
                 buildPath: `dist/js/${brand}/`,
@@ -54,6 +70,26 @@ const createStyleDictionaryConfig = (brand: BRAND, platform: PLATFORM) => {
                 ],
             },
 
+            */
+
+            "js": {
+                transformGroup: "js",
+                buildPath: `dist/js/${brand}/`,
+                files: [
+                    {
+                        "destination": "variables.js",
+                        "format": "myCustomFormataa",
+                        "options": {
+                            "showFileHeader": false
+                        }
+                    },
+                    {
+                        format: "typescript/module-declarations",
+                        destination: "variables.d.ts",
+                    },
+                ],
+            },
+
             // You can still use built-in transformGroups and formats like before
             json: {
                 transformGroup: "js",
@@ -62,6 +98,10 @@ const createStyleDictionaryConfig = (brand: BRAND, platform: PLATFORM) => {
                     {
                         destination: 'variables.json',
                         format: json,
+                    },
+                    {
+                        format: "typescript/module-declarations",
+                        destination: "variables.d.ts",
                     },
                 ],
             },
